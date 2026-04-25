@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1); //Buena práctica PSR-12
 namespace App\Escaner;
 
 //Clase para escanear nombres
-class EscanerNombre implements Escaner
+class EscanerNombre implements EscanerInterface
 {
     public static function limpiar(string $dato): string
     {
@@ -25,17 +26,17 @@ class EscanerNombre implements Escaner
     {
         //Debe tener entre 2 y 100 caracteres
         if (strlen($dato) < 2 || strlen($dato) > 100) {
-            return false;
+            throw new EscanerException("El nombre tiene que ser de entre 2 a 100 caracteres.");
         }
 
         //Solo letras (incluye acentos) y espacios
         if (!preg_match('/^[\p{L} ]+$/u', $dato)) {
-            return false;
+            throw new EscanerException ("El nombre solo puede contener letras y espacios.");
         }
 
         //Evitar que sea solo espacios o vacío
         if (trim($dato) === '') {
-            return false;
+            throw new EscanerException("El nombre no puede estar vacío.");
         }
 
         return true;

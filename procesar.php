@@ -1,22 +1,28 @@
 <?php
-require_once __DIR__ . '/src/Escaner/Escaner.php';
-require_once __DIR__ . '/src/Escaner/EscanerNombre.php';
-require_once __DIR__ . '/src/Escaner/EscanerEmail.php';
-require_once __DIR__ . '/src/Escaner/EscanerTexto.php';
+ require 'vendor/autoload.php';
 
 use App\Escaner\EscanerNombre;
 use App\Escaner\EscanerEmail;
 use App\Escaner\EscanerTexto;
+use App\Escaner\EscanerException;
 
-//Limpiar el formulario
-$nombre = EscanerNombre::limpiar($_POST['nombre']);
-$email = EscanerEmail::limpiar($_POST['email']);
-$comentario = EscanerTexto::limpiar($_POST['comentario']);
+$errores = []; //Arreglo para guardar los errores encontrados
 
-//Validar los datos
-$nombreValido = EscanerNombre::escanear($nombre);
-$emailValido = EscanerEmail::escanear($email);
-$comentarioValido = EscanerTexto::escanear($comentario);
+try {
+    //Limpiar el formulario
+    $nombre = EscanerNombre::limpiar($_POST['nombre']);
+    $email = EscanerEmail::limpiar($_POST['email']);
+    $comentario = EscanerTexto::limpiar($_POST['comentario']);
+
+    //Validar los datos
+    EscanerNombre::escanear($nombre);
+    EscanerEmail::escanear($email);
+    EscanerTexto::escanear($comentario);
+
+} catch (EscanerException $e) {
+    $errores[] = $e->getMessage();
+}
+
 
 ?>
 
@@ -28,9 +34,20 @@ $comentarioValido = EscanerTexto::escanear($comentario);
 </head>
 <body>
     <h2>Resultado del escaneo</h2>
+
     <p><strong>Nombre:</strong> <?= htmlspecialchars($nombre) ?></p>
     <p><strong>Email:</strong> <?= htmlspecialchars($email) ?></p>
     <p><strong>Comentario:</strong> <?= htmlspecialchars($comentario) ?></p>
+
+    <br>
+
+    <?php if (!empty($errores)): ?>
+        <ul>
+            <?php foreach ($errores as $error): ?>
+                <li><?= htmlspecialchars($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
     
     <br>
     

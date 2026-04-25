@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1); //Buena práctica PSR-12
 namespace App\Escaner;
 
 //Clase para escanear emails
-class EscanerEmail implements Escaner
+class EscanerEmail implements EscanerInterface
 {
     public static function limpiar(string $dato): string 
     {
@@ -19,12 +20,12 @@ class EscanerEmail implements Escaner
     {
         //No puede estar vacío y no puede ser solo espacios
         if (empty(trim($dato))) {
-            return false;
+            throw new EscanerException("El correo no puede estar vacío.");
         }
 
         //Validar formato de email
         if (!filter_var($dato, FILTER_VALIDATE_EMAIL)) {
-            return false;
+            throw new EscanerException("El formato de correo no es válido. (debe incluir @)");
         }
 
         return true;

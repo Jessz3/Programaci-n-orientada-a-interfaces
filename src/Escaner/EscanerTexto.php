@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1); //Buena práctica PSR-12
 namespace App\Escaner;
 
 //Clase para escanear textos (comentarios, mensajes, etc.)
-class EscanerTexto implements Escaner
+class EscanerTexto implements EscanerInterface
 {
     public static function limpiar(string $dato): string
     {
@@ -23,12 +24,12 @@ class EscanerTexto implements Escaner
     {
         //No puede estar vacío
         if (empty(trim($dato))) {
-            return false;
+            throw new EscanerException("El comentario no puedes estar vacío.");
         }
 
         //Máximo 500 caracteres
         if (strlen($dato) > 500) {
-            return false;
+            throw new EscanerException("El comentario no puede superar los 500 caracteres.");
         }
 
         return true;
