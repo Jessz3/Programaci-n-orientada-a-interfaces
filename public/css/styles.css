@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream: #f5f0e8;
+  --ink: #1a1a18;
+  --accent: #c84b2f;
+  --muted: #7a7670;
+  --border: #d4cfc6;
+  --field-bg: #ffffff;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--cream);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      var(--border) 39px,
+      var(--border) 40px
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.card {
+  background: var(--field-bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 3rem 3.5rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 6px 6px 0px var(--ink);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 2rem;
+  right: 2rem;
+  height: 3px;
+  background: var(--accent);
+}
+
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.field {
+  margin-bottom: 1.4rem;
+}
+
+label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  background: #fff;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--border);
+}
+
+button[type="submit"] {
+  margin-top: 0.8rem;
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.15s, transform 0.1s;
+}
+
+button[type="submit"]:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: translate(-1px, -1px);
+}
+
+button[type="submit"]:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+.resultado p {
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 0.75rem 1rem;
+}
+
+.errores {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.errores li {
+  font-size: 0.88rem;
+  color: var(--accent);
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--accent);
+  background: #fdf2f0;
+  margin-bottom: 0.5rem;
+  border-radius: 0 2px 2px 0;
+}
+
+.btn-volver {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: center;
+  padding: 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.15s, transform 0.1s;
+}
+
+.btn-volver:hover {
+  background: var(--ink);
+  color: var(--cream);
+  box-shadow: 3px 3px 0 var(--accent);
+  transform: translate(-1px, -1px);
+}

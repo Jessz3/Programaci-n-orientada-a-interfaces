@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Escaneo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="card">
+    <h1>Registro de datos</h1>
+    <h2>Jessica Zheng 8-1033-370 &amp; Erick Hou 8-1017-473</h2>
+
+    <form action="procesar.php" method="POST">
+        <div class="field">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. Ronny Alveo">
+        </div>
+
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com">
+        </div>
+
+        <div class="field">
+            <label for="comentario">Comentario</label>
+            <textarea id="comentario" name="comentario" placeholder="Escribe tu mensaje aquí..."></textarea>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+</body>
+</html>
