@@ -3,8 +3,8 @@
 declare(strict_types=1); //Buena práctica PSR-12
 namespace App\Escaner;
 
-//Clase para escanear emails
-class EscanerEmail implements EscanerInterface
+//Clase con métodos estáticos para escanear emails
+class EscanerEmail
 {
     public static function limpiar(string $dato): string 
     {

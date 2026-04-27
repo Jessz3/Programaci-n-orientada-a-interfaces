@@ -3,10 +3,10 @@
 declare(strict_types=1); //Buena práctica PSR-12
 namespace App\Escaner;
 
-//Clase para escanear textos (comentarios, mensajes, etc.)
+//Clase que implementa la interfaz para escanear textos (comentarios, mensajes, etc.)
 class EscanerTexto implements EscanerInterface
 {
-    public static function limpiar(string $dato): string
+    public function limpiar(string $dato): string
     {
         //Quitar etiquetas HTML y scripts
         $dato = strip_tags($dato);
@@ -20,7 +20,7 @@ class EscanerTexto implements EscanerInterface
         return $dato;
     }
 
-    public static function escanear(string $dato): bool
+    public function escanear(string $dato): bool
     {
         //No puede estar vacío
         if (empty(trim($dato))) {

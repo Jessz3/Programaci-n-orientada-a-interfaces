@@ -9,15 +9,19 @@ use App\Escaner\EscanerException;
 $errores = []; //Arreglo para guardar los errores encontrados
 
 try {
+    //Instanciamos los escáneres para nombres y textos
+    $escanerNombre = new EscanerNombre();
+    $escanerTexto = new EscanerTexto();
+
     //Limpiar el formulario
-    $nombre = EscanerNombre::limpiar($_POST['nombre']);
+    $nombre = $escanerNombre->limpiar($_POST['nombre']);
     $email = EscanerEmail::limpiar($_POST['email']);
-    $comentario = EscanerTexto::limpiar($_POST['comentario']);
+    $comentario = $escanerTexto->limpiar($_POST['comentario']);
 
     //Validar los datos
-    EscanerNombre::escanear($nombre);
+    $escanerNombre->escanear($nombre);
     EscanerEmail::escanear($email);
-    EscanerTexto::escanear($comentario);
+    $escanerTexto->escanear($comentario);
 
 } catch (EscanerException $e) {
     $errores[] = $e->getMessage();

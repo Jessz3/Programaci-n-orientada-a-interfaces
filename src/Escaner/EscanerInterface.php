@@ -5,7 +5,7 @@ namespace App\Escaner;
 
 //Interfaz común para los escáneres
 interface EscanerInterface {
-    public static function limpiar(string $dato): string;
-    public static function escanear(string $dato): bool;
+    public function limpiar(string $dato): string;
+    public function escanear(string $dato): bool;
 }
 

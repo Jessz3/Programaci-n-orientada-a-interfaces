@@ -3,10 +3,10 @@
 declare(strict_types=1); //Buena práctica PSR-12
 namespace App\Escaner;
 
-//Clase para escanear nombres
+//Clase que implementa la interfaz para escanear nombres
 class EscanerNombre implements EscanerInterface
 {
-    public static function limpiar(string $dato): string
+    public function limpiar(string $dato): string
     {
         //Quitar etiquetas HTML y scripts
         $dato = strip_tags($dato);
@@ -22,7 +22,7 @@ class EscanerNombre implements EscanerInterface
         return ucwords(strtolower($dato));
     }
 
-    public static function escanear(string $dato): bool
+    public function escanear(string $dato): bool
     {
         //Debe tener entre 2 y 100 caracteres
         if (strlen($dato) < 2 || strlen($dato) > 100) {
